@@ -1,0 +1,29 @@
+{{!-- hbs is a fancier version of html with the same syntax. Installation in the app: npm install hbs --}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My first view</title>
+</head>
+<body>
+  <a href="/">Back to home</a>
+  <a href="/cat">See the cat-page</a>
+  <a href="/about">Visit the about-page</a>
+  <h1>Hello {{name}} {{lastName}}!</h1>
+  {{!-- if helper can be used to render a block conditionally. If its arguments returns false, undefined, null, "", 0 or [], Handlebars will not render the block. An else statement can also be added  --}}
+  {{#if address}}
+    <h2>This won't be displayed!!</h2>
+    {{else}}
+    <h2>This will be displayed because the "address" property does not exist!!</h2>
+    {{/if}}
+    {{!-- unless helper is the inverse of the if helper and will render the block if the expression return a falsy value--}}
+    {{#unless address}}
+      <h3>WARNING: We can't find the address!</h3>
+    {{/unless}}
+  <p>Welcome to the {{{bootcamp}}}!!</p>
+  <img src="https://media.giphy.com/media/l0MYEqEzwMWFCg8rm/giphy.gif">
+</body>
+</html>
