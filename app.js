@@ -1,5 +1,5 @@
 // The express() function creates an Express application. Require Express
-const express = require ("express");
+const express = require("express");
 
 // Creating a server named app
 // Express server handling requests and responses
@@ -60,16 +60,16 @@ app.get("/cat", (request, response, next) => {
 
 // creates an absolute path pointing to a folder called "views"
 app.set("views", __dirname + "/views");
-
 // Telling Express app that HBS will be in charge of rendering the HTML:
-app.set("views", __dirname + "/views");
 app.set("view engine", "hbs");
 
+/*
 // referring to views files by calling res.render instead of res.send
 app.get("/index", (req, res, next) => {
   // send views/index.hbs for displaying in the browser
   res.render("index");
 });
+*/
 
 app.get("/about", (req, res, next) => {
   res.render("about")
@@ -79,8 +79,13 @@ app.get("/about", (req, res, next) => {
 app.get("/index", (req, res, next) => {
   let data = {
     name: 'Ironhacker',
-    lastName: "Rocking it!"
-    bootcamp: "<span>IronHack WebDev</span>"
+    lastName: "Rocking it!",
+    bootcamp: "<span>IronHack WebDev</span>",
+    address: {
+      street: "Your heart",
+      number: 13,
+    },
+    cities: ["Miami", "Madrid", "Barcelona", "Paris", "México", "Berlin"]
   };
   res.render('index', data);
 })

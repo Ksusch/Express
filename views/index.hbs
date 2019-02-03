@@ -12,18 +12,49 @@
   <a href="/">Back to home</a>
   <a href="/cat">See the cat-page</a>
   <a href="/about">Visit the about-page</a>
+  <a href="/players">See the players</a>
+  <a href="/teams">Teams</a>
   <h1>Hello {{name}} {{lastName}}!</h1>
+  <p>Welcome to the {{{bootcamp}}}!!</p>
   {{!-- if helper can be used to render a block conditionally. If its arguments returns false, undefined, null, "", 0 or [], Handlebars will not render the block. An else statement can also be added  --}}
-  {{#if address}}
+  {{!-- {{#if address}}
     <h2>This won't be displayed!!</h2>
     {{else}}
     <h2>This will be displayed because the "address" property does not exist!!</h2>
-    {{/if}}
+    {{/if}} --}}
     {{!-- unless helper is the inverse of the if helper and will render the block if the expression return a falsy value--}}
-    {{#unless address}}
+    {{!-- {{#unless address}}
       <h3>WARNING: We can't find the address!</h3>
-    {{/unless}}
-  <p>Welcome to the {{{bootcamp}}}!!</p>
+    {{/unless}} --}}
+    {{!-- each block helper iterates over a list of elements, mainly objects and arrays. {{this}} refers to the element being iterated --}}
+    <ul>
+      {{!-- <li>Miami</li>
+      <li>Madrid</li>
+      <li>Barcelona</li>
+      <li>Paris</li>
+      <li>Méxiko</li>
+      <li>Berlin</li> --}}
+      {{#each cities}}
+      {{!-- @index references to each item with its index looping through each --}}
+        {{!-- <li>{{@key}} {{@index}}: {{this}}</li> --}}
+        {{!-- @key gives a bullet point in addition to the index--}}
+        {{!-- <li>{{@key}}: {{this}}</li> --}}
+      {{!-- {{else}} --}}
+        {{!-- <p>No cities yet!</p> --}}
+        {{!-- @first - @last refer to the first and last variables when iterating over an array returning a boolean. When iterating over an object, only the @first is available! --}}
+        {{#if @first}}
+          <li><b>{{this}}</b></li>
+        {{else if @last}}
+          <li><i>{{this}}</i></li>
+        {{else}}
+          <li>{{this}}</li>
+        {{/if}}
+      {{/each}}
+    </ul>
+    {{!-- with block helper shifts the context inside so it can be referred to {{address.street}} and {{address.number}} as {{street}} and {{number}} --}}
+    {{#with address}}
+      <p>{{street}}, {{number}}</p>
+    {{/with}}
   <img src="https://media.giphy.com/media/l0MYEqEzwMWFCg8rm/giphy.gif">
 </body>
 </html>
